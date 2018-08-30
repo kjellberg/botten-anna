@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-if (process.env.NODE_ENV !== 'production') {
-  // Load environment variables from .env
-  require('dotenv').load();
+const commands = require('./src/commands');
+
+// Load environment variables from .env
+if (process.env.NODE_ENV !== 'production') { 
+  require('dotenv').load(); 
 }
 
 client.on('ready', () => {
@@ -11,9 +13,14 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
+  let command = msg.content;
+
+  // CHeck if incoming message has a command.
+  if (typeof commands[command] !== "undefined") { 
+    // Run the command
+    commands[command](msg);
   }
+
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
