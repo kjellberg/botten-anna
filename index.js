@@ -15,10 +15,23 @@ client.on('ready', () => {
 client.on('message', msg => {
   let command = msg.content;
 
-  // CHeck if incoming message has a command.
+  // Check if first character is a exclamation mark!
+  if (command.charAt(0) !== "!") {
+    // Return here cause we do not want to 
+    // waste any time on messages that are not commands.
+    return;
+  }
+
+  // Do not process things that are sent from ourself.
+  if (msg.author.id == client.user.id) return;
+
+  // Remove first character (!) from message.
+  command = command.substring(1);
+
+  // Check if incoming message has a command.
   if (typeof commands[command] !== "undefined") { 
     // Run the command
-    commands[command](msg);
+    commands[command].src(msg);
   }
 
 });
