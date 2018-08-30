@@ -1,5 +1,4 @@
 module.exports = {
-
   help: {
     desc: 'Shows all available options and commands.',
     src: require('./misc/help')
@@ -18,5 +17,10 @@ module.exports = {
   duckpic: {
     desc: 'I\'ll show you a dickpic',
     src: require('./misc/duckpic')
+  },
+
+  contribute: {
+    desc: 'd0 y0u sp34k l33t?',
+    src: require('./misc/contribute')
   },
 }
