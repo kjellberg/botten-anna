@@ -15,8 +15,8 @@ module.exports = {
     src: require('./misc/thetime')
   },
 
-  duckpick: {
+  duckpic: {
     desc: 'I\'ll show you a dickpic',
-    src: require('./misc/duckpick')
+    src: require('./misc/duckpic')
   },
 }
